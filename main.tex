@@ -1,8 +1,21 @@
+%# -*- coding: utf-8-unix -*-
 % !TeX spellcheck = zh_CN
 \documentclass[UTF8,a4paper,12pt]{book}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
 
+\usepackage{color}
+\usepackage{import}
+\usepackage{graphicx}
+\usepackage{transparent}
+\usepackage{indentfirst}					% 段首缩进
+\usepackage[utf8]{inputenc}
+
+\graphicspath{{./img/}}
+
+\setlength{\parindent}{2em}					% 段首缩进
+\setlength{\parskip}{1em}					% 段落间距
+\renewcommand{\baselinestretch}{1.5}		% 行间距
+
+% 自定义命令
 
 % 字体
 \usepackage{xeCJK}
@@ -17,14 +30,14 @@
 \title{X 教程}
 \date{2023年04月26日}
 
-\frontmatter
+\frontmatter										 % 对前言和概览用罗马数字作为页码
+\mainmatter      		 							% 对正文用阿拉伯数字作为页码
 \maketitle
 \tableofcontents
 
 
 \mainmatter
-\include{./docs/chapter01}
-\include{./docs/chapter02}
+\include{./docs/1.新手开发者指南}
 
 \backmatter
 % bibliography, glossary and index would go here.
