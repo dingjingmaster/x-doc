@@ -1,0 +1,32 @@
+% !TeX spellcheck = zh_CN
+\documentclass[UTF8,a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+
+% 字体
+\usepackage{xeCJK}
+\usepackage{graphicx}
+\usepackage{fontspec} 
+\setCJKmainfont{Source Han Mono SC} 
+
+
+\begin{document}
+
+\author{丁敬}
+\title{X 教程}
+\date{2023年04月26日}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+
+\mainmatter
+\include{./docs/chapter01}
+\include{./docs/chapter02}
+
+\backmatter
+% bibliography, glossary and index would go here.
+
+\end{document}
