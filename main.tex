@@ -1,21 +1,72 @@
 %# -*- coding: utf-8-unix -*-
 % !TeX spellcheck = zh_CN
-\documentclass[UTF8,a4paper,12pt]{book}
+\documentclass[oneside,UTF8,a4paper,12pt]{book}		% twoside 表示双面打印
 
+\usepackage{cite}
 \usepackage{color}
+\usepackage{xcolor}
 \usepackage{import}
+\usepackage{hyperref}								% 添加超链接
 \usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{listings}								% 代码
 \usepackage{transparent}
-\usepackage{indentfirst}					% 段首缩进
+\usepackage{indentfirst}							% 段首缩进
+\usepackage{supertabular}							% 长表格（换页处理）
 \usepackage[utf8]{inputenc}
 
 \graphicspath{{./img/}}
 
-\setlength{\parindent}{2em}					% 段首缩进
-\setlength{\parskip}{1em}					% 段落间距
-\renewcommand{\baselinestretch}{1.5}		% 行间距
+\setlength{\parindent}{2em}							% 段首缩进
+\setlength{\parskip}{1em}							% 段落间距
+\renewcommand{\baselinestretch}{1.5}				% 行间距
 
 % 自定义命令
+
+% 设置itemize行间距
+\setitemize{
+	itemsep=0pt,
+	partopsep=0pt,
+	parsep=0.8em,
+	topsep=5pt}
+	
+% 代码颜色设置
+\lstset{ 
+	backgroundcolor=\color{white},   				% 选择代码背景，必须加上\ usepackage {color}或\ usepackage {xcolor}.
+	basicstyle=\footnotesize,        				% 设置代码字号.
+	breakatwhitespace=false,         				% 设置是否当且仅当在空白处自动中断.
+	breaklines=true,                 				% 设置自动断行.
+	captionpos=b,                    				% 设置标题位置.
+	commentstyle=\color{mygreen},    				% 设置注释格式
+	deletekeywords={...},            				% 是否删除给定语言的关键词.
+	escapeinside={\%*}{*)},          				% 是否在代码中添加LaTex.
+	extendedchars=true,              				% 是否允许使用非ASCII字符; 仅适用于8位编码，不适用于UTF-8. 
+	frame=single,	                   				% 给代码区添加边框.
+	keepspaces=true,                 				% 保留空格（useful for keeping indentation of code (possibly needs columns=flexible).
+	keywordstyle=\color{blue},       				% 关键字显示风格.
+	morekeywords={*,...},            				% 是否需要添加其他的关键词.
+	numbers=left,                    				% 给代码添加行号，可取值none, left, right.
+	numbersep=5pt,                   				% 设置行号与代码之间的间隔
+	numberstyle=\tiny\color{green}, 				% 行号的字号和颜色
+	rulecolor=\color{black},         				% 边框颜色，如果没有设置，框架颜色可以在非黑色文本中的换行符上更改（例如 text (e.g. comments (green here))）
+	showspaces=false,                				% 显示每个地方添加特定下划线的空格; 覆盖了'showtringspaces'
+	showstringspaces=false,          				% 仅在字符串中允许空格
+	showtabs=false,                  				% show tabs within strings adding particular underscores
+	stepnumber=1,                    				% the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{mymauve},     				% string literal style
+	tabsize=4,	                   					% 将默认tab设置为2个空格
+	title=\lstname                   				% show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+% 定义
+\newtheorem{note}{注意:}
+
+% 去掉超链接红框
+\hypersetup{hidelinks,
+	colorlinks=true,
+	allcolors=black,
+	pdfstartview=Fit,
+	breaklinks=true}
 
 % 字体
 \usepackage{xeCJK}
