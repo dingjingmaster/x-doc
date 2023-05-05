@@ -7,6 +7,7 @@
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{import}
+\usepackage{fancyhdr}
 \usepackage{hyperref}								% 添加超链接
 \usepackage{graphicx}
 \usepackage{enumitem}
@@ -15,16 +16,29 @@
 \usepackage{indentfirst}							% 段首缩进
 \usepackage{supertabular}							% 长表格（换页处理）
 \usepackage[utf8]{inputenc}
-%\usepackage[hyphenbreaks]{breakurl}					% 超链接自动换行
-
+\usepackage[center]{titlesec}						% chapter1修改为第1章
 
 \graphicspath{{./img/}}
 
 \setlength{\parindent}{2em}							% 段首缩进
-\setlength{\parskip}{1em}							% 段落间距
-\renewcommand{\baselinestretch}{1.5}				% 行间距
+\setlength{\parskip}{.5em}							% 段落间距
+\renewcommand{\baselinestretch}{1.3}				% 行间距
+
+% 页眉
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{%
+	\markboth{第\,\thechapter\,章\ #1}{}}
 
 % 自定义命令
+
+% 章节汉化
+\titleformat{\chapter}{\raggedright\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
+\titleformat{\section}{\raggedright\Large\bfseries}{\,\thesection\,}{1em}{}
+\titleformat{\subsection}{\raggedright\large\bfseries}{\,\thesubsection\,}{1em}{}
+\titleformat{\subsubsection}{\raggedright\normalsize\bfseries}{\,\thesubsection\,}{1em}{}
+
+% 目录居中
+\renewcommand*\contentsname{\hfill 目录 \hfill}
 
 % 设置itemize行间距
 \setitemize{
@@ -34,32 +48,30 @@
 	topsep=5pt}
 	
 % 代码颜色设置
-\lstset{ 
-	backgroundcolor=\color{white},   				% 选择代码背景，必须加上\ usepackage {color}或\ usepackage {xcolor}.
-	basicstyle=\footnotesize,        				% 设置代码字号.
-	breakatwhitespace=false,         				% 设置是否当且仅当在空白处自动中断.
-	breaklines=true,                 				% 设置自动断行.
-	captionpos=b,                    				% 设置标题位置.
-	commentstyle=\color{mygreen},    				% 设置注释格式
-	deletekeywords={...},            				% 是否删除给定语言的关键词.
-	escapeinside={\%*}{*)},          				% 是否在代码中添加LaTex.
-	extendedchars=true,              				% 是否允许使用非ASCII字符; 仅适用于8位编码，不适用于UTF-8. 
-	frame=single,	                   				% 给代码区添加边框.
-	keepspaces=true,                 				% 保留空格（useful for keeping indentation of code (possibly needs columns=flexible).
-	keywordstyle=\color{blue},       				% 关键字显示风格.
-	morekeywords={*,...},            				% 是否需要添加其他的关键词.
-	numbers=left,                    				% 给代码添加行号，可取值none, left, right.
-	numbersep=5pt,                   				% 设置行号与代码之间的间隔
-	numberstyle=\tiny\color{green}, 				% 行号的字号和颜色
-	rulecolor=\color{black},         				% 边框颜色，如果没有设置，框架颜色可以在非黑色文本中的换行符上更改（例如 text (e.g. comments (green here))）
-	showspaces=false,                				% 显示每个地方添加特定下划线的空格; 覆盖了'showtringspaces'
-	showstringspaces=false,          				% 仅在字符串中允许空格
-	showtabs=false,                  				% show tabs within strings adding particular underscores
-	stepnumber=1,                    				% the step between two line-numbers. If it's 1, each line will be numbered
-	stringstyle=\color{mymauve},     				% string literal style
-	tabsize=4,	                   					% 将默认tab设置为2个空格
-	title=\lstname                   				% show the filename of files included with \lstinputlisting; also try caption instead of title
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
 }
+\lstset{style=mystyle}
 
 % 定义
 \newtheorem{note}{注意:}
@@ -98,14 +110,17 @@
 \title{X 教程}
 \date{2023年04月26日}
 
-\frontmatter										 % 对前言和概览用罗马数字作为页码
+\frontmatter										% 对前言和概览用罗马数字作为页码
 \mainmatter      		 							% 对正文用阿拉伯数字作为页码
 \maketitle
-\tableofcontents
+\tableofcontents									% 目录
 
 
 \mainmatter
+\begin{sloppypar}									% 自动换行
 \include{./docs/1.新手开发者指南}
+\include{./docs/2.X接口}
+\end{sloppypar}
 
 \backmatter
 % bibliography, glossary and index would go here.
